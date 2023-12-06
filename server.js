@@ -6,7 +6,7 @@ const schema = createSchema({
     typeDefs: /* GraphQL */ `
       type Query {
         products: [Product]
-        orders:[Order]
+        orders: [Order]
       }
       type Product {
         id: ID!
@@ -25,13 +25,39 @@ const schema = createSchema({
       }
       type OrderItem {
         product: Product!
-        Quantity: Int!
+        quantity: Int!
       }
     `,
     resolvers: {
       Query: {
-        description: () => 'Red Shoe',
-        price: () => 42.12,
+        products: () => [
+          {
+            id: 'redshoe',
+            description: 'Red Shoe',
+            price: 42.12,
+          },
+          {
+            id: 'bluejean',
+            description: 'Blue Jeans',
+            price: 55.55
+          },
+        ],
+        orders: () => [
+          {
+            date: '2005-05-05',
+            subtotal:  90.22,
+            items: [
+              {
+                product: {
+                  id:  'redshoe',
+                  description:  'Old Red Shoe',
+                  price: 45.11
+                },
+                quantity: 2,
+              }
+            ]
+          }
+        ]
       }
     }
   });
