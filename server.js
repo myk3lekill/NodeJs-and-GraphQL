@@ -5,8 +5,27 @@ const { createYoga } = require('graphql-yoga');
 const schema = createSchema({
     typeDefs: /* GraphQL */ `
       type Query {
-        description: String
-        price: Float
+        products: [Product]
+        orders:[Order]
+      }
+      type Product {
+        id: ID!
+        description: String!
+        price: Float!
+        reviews: [Review] 
+      }
+      type Review {
+        rating: Int!
+        comment: String
+      }
+      type Order {
+        date: String!
+        subtotal: Float!
+        items: [OrderItem]
+      }
+      type OrderItem {
+        product: Product!
+        Quantity: Int!
       }
     `,
     resolvers: {
