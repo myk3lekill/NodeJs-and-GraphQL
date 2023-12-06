@@ -27,6 +27,9 @@ const schema = createSchema({
 
 const app = express();
 
+//MiddleWare
+app.use('/graphql', yoga)
+
 
 app.listen(3000, () => {
     console.log('Running GraphQL server...')
