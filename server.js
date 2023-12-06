@@ -13,7 +13,6 @@ const schema = createSchema({
       Query: {
         description: () => 'Red Shoe',
         price: () => 42.12,
- 
       }
     }
   });
